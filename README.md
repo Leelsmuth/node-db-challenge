@@ -39,12 +39,15 @@ Commit your code regularly and use descriptive messages. This helps both you (in
 Demonstrate your understanding of this week's concepts by answering the following free-form questions. Edit this document to include your answers after each question. Make sure to leave a blank line above and below your answer so it is clear and easy to read by your project manager.
 
 - [ ] Explain the difference between `Relational Databases` and `SQL`.
+  Ans: An RDBMS(Relational Database Management Systems) uses a relational model of data, as the name suggests. SQL, the Structured Query Language, is a language (or a family of closely related languages or dialects) which is typically used to query the RDBMS. So: the RDBMS is the system, and SQL is the language used to interact with the system.
 
 - [ ] Why do tables need a `primary key`?
+  Ans: Primary keys are important because they are unique, making it so we can refer to records (rows) of information we want to access. They also make it so that we can reference that record from another table using a foreign key.
 
 - [ ] What is the name given to a table column that references the primary key on another table.
-
+  Ans: Foreign Key
 - [ ] What do we need in order to have a _many to many_ relationship between two tables.
+  Ans: A many-to-many relationship occurs when multiple records in a table are associated with multiple records in another table. Relational database systems usually don't allow us to implement a direct many-to-many relationship between two tables. To avoid this problem, we can break the many-to-many relationship into two one-to-many relationships by using a third table, called a join table.
 
 ## Minimum Viable Product
 

@@ -18,7 +18,7 @@ exports.up = function(knex) {
       .createTable("resources", tbl => {
         tbl.increments();
         tbl
-          .integer("resource_name", 255)
+          .string("resource_name", 255)
           .notNullable()
           .unique();
         tbl.string("resource_description", 255);
