@@ -41,6 +41,7 @@ exports.up = function(knex) {
         // foreign key for Project id
         tbl
           .integer("project_id")
+          .notNullable()
           .unsigned()
           .references("id")
           .inTable("projects")
