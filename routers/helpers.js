@@ -14,7 +14,9 @@ module.exports = {
 
 // get projects
 function getProjects() {
-  return db("projects");
+  return db("projects").then(project => {
+    return project.map(project => body(project));
+  });
 }
 // get project by id
 function getProjectsById(id) {
@@ -43,7 +45,10 @@ function getTasks() {
       "t.task_description",
       "t.task_notes",
       "t.complete"
-    );
+    )
+    .then(task => {
+      return task.map(task => body(task));
+    });
 }
 
 //get task by id
@@ -82,4 +87,11 @@ function addResource(resource) {
     .then(id => {
       return getResourceById(id[0]);
     });
+}
+
+function trueOrFalse(tf) {
+  return tf === 1 ? true : false;
+}
+function body(item) {
+  return { ...item, complete: trueOrFalse(item.complete) };
 }

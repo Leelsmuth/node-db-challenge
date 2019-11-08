@@ -8,15 +8,10 @@ router.get("/", (req, res) => {
   projects
     .getProjects()
     .then(projects => {
-      const displayProjects = projects.map(project => {
-        return { ...project, completed: project.complete === 1 };
-      });
-      return res.json(displayProjects);
+      res.json(projects);
     })
     .catch(err => {
-      res
-        .status(500)
-        .json({ error: "Could not retrieve Projects from the server" });
+      res.status(500).json({ message: "Failed to get projects" + err.message });
     });
 });
 
@@ -34,9 +29,9 @@ router.get("/:id", (req, res) => {
       }
     })
     .catch(err => {
-      res
-        .status(500)
-        .json({ error: "Could not retrieve Project from the server" });
+      res.status(500).json({
+        error: "Could not retrieve Project from the server" + err.message
+      });
     });
 });
 
@@ -48,10 +43,9 @@ router.post("/", (req, res) => {
       res.status(201).json(project);
     })
     .catch(err => {
-      console.log(err);
-      res
-        .status(500)
-        .json({ error: "Failed to create the new project on the server " });
+      res.status(500).json({
+        error: "Failed to create the new project on the server " + err.message
+      });
     });
 });
 
