@@ -53,14 +53,14 @@ function getTasks() {
 
 //get task by id
 function getTasksById(id) {
-  return db("task")
+  return db("tasks")
     .where("id", id)
     .first();
 }
 
 // add task
 function addTask(tasks) {
-  return db("task")
+  return db("tasks")
     .insert(tasks)
     .then(id => {
       return getTasksById(id[0]);

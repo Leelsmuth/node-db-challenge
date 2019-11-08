@@ -14,11 +14,9 @@ router.get("/", (req, res) => {
       return res.json(displayTasks);
     })
     .catch(err => {
-      res
-        .status(500)
-        .json({
-          error: "Could not retrieve tasks from the server" + err.message
-        });
+      res.status(500).json({
+        error: "Could not retrieve tasks from the server" + err.message
+      });
     });
 });
 
@@ -30,10 +28,11 @@ router.post("/", (req, res) => {
       res.status(201).json(task);
     })
     .catch(err => {
-      console.log(err);
       res
         .status(500)
-        .json({ error: "Could not create new task in the database" });
+        .json({
+          error: "Could not create new task in the database" + err.message
+        });
     });
 });
 
